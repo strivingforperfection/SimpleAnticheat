@@ -1,0 +1,1 @@
+A simple anticheat that detects BodyGyro/BodyVelocity in characters, checks for swimming outside water, and monitors speed changes. Kicks players and logs to Discord when exploits are detected. Inspired by beanandsoupguy's Heli-Wars anticheat.
