@@ -1,5 +1,5 @@
---SERVER SIDE ANTICHEAT HANDLER (Script)
---Place this in ServerScriptService
+--author: striving
+--place inside of serverscriptservice
 local httpservice = game:GetService("HttpService")
 local players = game:GetService("Players")
 local localizationservice = game:GetService("LocalizationService")
