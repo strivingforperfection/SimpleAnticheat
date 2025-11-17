@@ -21,26 +21,26 @@ local function sendlog(player, detection)
 	kickedplayers[player.UserId] = true
 	print("Kicking player: " .. player.Name .. " - " .. detection)
 
-	local countryCode = "Unknown"
+	local countrycode = nil
 
 	local success1, result1 = pcall(function()
 		return localizationservice:GetCountryRegionForPlayerAsync(player)
 	end)
 
 	if success1 and result1 and result1 ~= "" then
-		countryCode = result1
+		countrycode = result1
 	else
 		local success2, result2 = pcall(function()
 			return players:GetPlayerCountryRegionAsync(player)
 		end)
 
 		if success2 and result2 and result2 ~= "" then
-			countryCode = result2
+			countrycode = result2
 		end
 	end
 
 	--convert country code to full name
-	local countryNames = {
+	local countrynames = {
 		["US"] = "United States",
 		["GB"] = "United Kingdom",
 		["CA"] = "Canada",
@@ -95,7 +95,7 @@ local function sendlog(player, detection)
 		["TW"] = "Taiwan"
 	}
 
-	local country = countryNames[countryCode] or countryCode
+	local country = countrynames[countryCode] or countryCode
 
 	local data = {
 		["embeds"] = {{
@@ -129,7 +129,7 @@ local function sendlog(player, detection)
 		warn("failed to send webhook: " .. tostring(err))
 	end
 
-	player:Kick()
+	player:Kick() --player:Kick(detection) if you want
 end
 
 --listen for detections from client
